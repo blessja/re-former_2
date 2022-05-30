@@ -1,0 +1,26 @@
+<%= form_tag("/users", method: "post") do %>
+    <%= label_tag(:username, "Username") %>
+    <%= text_field_tag(:username) %>
+    <%= label_tag(:email, "Email") %>
+    <%= text_field_tag(:email) %>
+    <%= label_tag(:password, "Password") %>
+    <%= text_field_tag(:password) %>
+    <%= submit_tag("Submit") %>
+<% end %>  
+
+<%= form_for @user do |f|  %>
+    <% if @user.errors.any? %>
+    <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
+    <%= f.label :Username, 'Write down your user' %>
+    <%= f.text_field :username, value: 'jaxson2300' %><br><br>
+    <%= f.label :Email %>
+    <%= f.email_field :email , placeholder: 'example@example.com' %><br><br>
+    <%= f.label :Password %>
+    <%= f.password_field :password %><br><br>
+    <%= f.submit %>
+<% end %>
